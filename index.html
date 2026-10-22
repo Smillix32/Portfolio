@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сайты и Telegram-боты для бизнеса</title>
+<meta name="description" content="Создание сайтов, интернет-магазинов и Telegram-ботов для бизнеса в Узбекистане. Быстро, недорого, на русском и узбекском.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1020; --bg2: #121a33; --card: #18213f; --text: #eef2ff; --muted: #a5b0d0;
+    --accent: #3b82f6; --accent2: #22c55e; --border: #26325a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+  header { position: sticky; top: 0; z-index: 10; background: rgba(11,16,32,.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+  .logo { font-weight: 800; font-size: 18px; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 20px; font-size: 14px; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+  .lang { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .lang button { background: none; border: 0; color: var(--muted); padding: 6px 10px; cursor: pointer; font: inherit; font-size: 13px; }
+  .lang button.on { background: var(--accent); color: #fff; }
+  @media (max-width: 720px) { nav { display: none; } }
+
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .hero h1 { font-size: clamp(30px, 6vw, 54px); line-height: 1.15; font-weight: 800; }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { color: var(--muted); font-size: 18px; max-width: 640px; margin: 18px auto 30px; }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 12px; font-weight: 600; transition: transform .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.ghost { border: 1px solid var(--border); }
+  .badges { display: flex; gap: 24px; justify-content: center; margin-top: 40px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+  .badges b { color: var(--text); display: block; font-size: 22px; }
+
+  section { padding: 60px 0; }
+  section.alt { background: var(--bg2); }
+  h2 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 8px; text-align: center; }
+  .sub { color: var(--muted); text-align: center; margin-bottom: 36px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .card .ico { font-size: 32px; }
+  .card h3 { margin: 10px 0 6px; font-size: 19px; }
+  .card p, .card li { color: var(--muted); font-size: 15px; }
+  .card ul { list-style: none; margin-top: 10px; }
+  .card li::before { content: "✓ "; color: var(--accent2); }
+  .price { margin-top: 14px; font-weight: 800; font-size: 20px; color: var(--text); }
+  .price small { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  .demo { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+  @media (max-width: 820px) { .demo { grid-template-columns: 1fr; } }
+  .phone { max-width: 320px; margin: 0 auto; background: #0e1621; border-radius: 28px; border: 8px solid #222; padding: 14px; font-size: 14px; }
+  .phone .top { text-align: center; color: #fff; font-weight: 600; padding-bottom: 10px; border-bottom: 1px solid #1f2b3a; margin-bottom: 10px; }
+  .msg { background: #182533; padding: 10px 12px; border-radius: 12px; margin-bottom: 8px; color: #e7eef6; }
+  .msg.me { background: #2b5278; margin-left: 40px; }
+  .kb { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .kb span { background: #1f2f40; text-align: center; padding: 8px; border-radius: 8px; color: #8fc6ff; font-size: 13px; }
+
+  .steps { counter-reset: s; }
+  .steps .card { position: relative; padding-top: 52px; }
+  .steps .card::before { counter-increment: s; content: counter(s); position: absolute; top: 18px; left: 24px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 14px; }
+
+  .contact { text-align: center; }
+  .contact .btns { margin-top: 20px; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 0; border-top: 1px solid var(--border); }
+  .float { position: fixed; right: 16px; bottom: 16px; background: #229ED9; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; box-shadow: 0 6px 20px rgba(0,0,0,.4); z-index: 20; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#" class="logo" data-name>at_139bpm</a>
+    <nav>
+      <a href="#services" data-i="nav_services">Услуги</a>
+      <a href="#demo" data-i="nav_demo">Примеры</a>
+      <a href="#how" data-i="nav_how">Как работаем</a>
+      <a href="#contact" data-i="nav_contact">Контакты</a>
+    </nav>
+    <div class="lang"><button data-l="ru" class="on">RU</button><button data-l="uz">UZ</button></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1 data-i="hero_title" data-html>Сайты и <em>Telegram-боты</em><br>для вашего бизнеса</h1>
+    <p data-i="hero_text">Помогаю магазинам, кафе, салонам и сервисам получать больше заказов онлайн. Быстро, понятно и без лишних затрат.</p>
+    <div class="btns">
+      <a class="btn primary" data-tg data-i="btn_order">Заказать в Telegram</a>
+      <a class="btn ghost" href="#services" data-i="btn_prices">Смотреть цены</a>
+    </div>
+    <div class="badges">
+      <div><b data-i="b1v">от 3 дней</b><span data-i="b1">срок запуска</span></div>
+      <div><b>RU / UZ</b><span data-i="b2">два языка</span></div>
+      <div><b>50 / 50</b><span data-i="b3">оплата частями</span></div>
+      <div><b data-i="b4v">1 месяц</b><span data-i="b4">поддержка бесплатно</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <h2 data-i="s_title">Услуги и цены</h2>
+    <p class="sub" data-i="s_sub">Цена фиксируется до начала работы, без скрытых доплат</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">🤖</div>
+        <h3 data-i="c1_t">Telegram-бот для заказов</h3>
+        <ul>
+          <li data-i="c1_1">Каталог товаров с фото</li>
+          <li data-i="c1_2">Корзина и оформление заказа</li>
+          <li data-i="c1_3">Заказы приходят вам в Telegram</li>
+        </ul>
+        <div class="price"><span data-i="from">от</span> 1 500 000 <small data-i="sum">сум</small></div>
+      </div>
+      <div class="card">
+        <div class="ico">📅</div>
+        <h3 data-i="c2_t">Бот для записи</h3>
+        <ul>
+          <li data-i="c2_1">Выбор услуги, даты и времени</li>
+          <li data-i="c2_2">Напоминания клиентам</li>
+          <li data-i="c2_3">Для салонов, клиник, автосервисов</li>
+        </ul>
+        <div class="price"><span data-i="from">от</span> 2 000 000 <small data-i="sum">сум</small></div>
+      </div>
+      <div class="card">
+        <div class="ico">🌐</div>
+        <h3 data-i="c3_t">Сайт-визитка / лендинг</h3>
+        <ul>
+          <li data-i="c3_1">Красиво смотрится на телефоне</li>
+          <li data-i="c3_2">Кнопки звонка, Telegram, карта</li>
+          <li data-i="c3_3">Домен .uz и Google Maps</li>
+        </ul>
+        <div class="price"><span data-i="from">от</span> 2 000 000 <small data-i="sum">сум</small></div>
+      </div>
+      <div class="card">
+        <div class="ico">🛒</div>
+        <h3 data-i="c4_t">Интернет-магазин</h3>
+        <ul>
+          <li data-i="c4_1">Каталог, корзина, админка</li>
+          <li data-i="c4_2">Оплата Click / Payme</li>
+          <li data-i="c4_3">Telegram-бот в подарок</li>
+        </ul>
+        <div class="price"><span data-i="from">от</span> 5 000 000 <small data-i="sum">сум</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap demo">
+    <div>
+      <h2 style="text-align:left" data-i="d_title">Попробуйте живой пример</h2>
+      <p style="color:var(--muted);margin:12px 0 20px" data-i="d_text">Это демо-бот магазина. Откройте его в Telegram и пройдите путь клиента: выберите товар, добавьте в корзину, оформите заказ. Такой же бот я сделаю для вашего бизнеса, с вашими товарами и ценами.</p>
+      <a class="btn primary" data-demo data-i="d_btn">Открыть демо-бота</a>
+    </div>
+    <div class="phone">
+      <div class="top">🛍 Demo Shop Bot</div>
+      <div class="msg" data-i="m1">Добро пожаловать! Выберите категорию 👇</div>
+      <div class="kb"><span>👕 Одежда</span><span>👟 Обувь</span><span>🎒 Аксессуары</span><span>🛒 Корзина</span></div>
+      <div class="msg me">👟 Обувь</div>
+      <div class="msg" data-i="m2" data-html>Кроссовки Air Run<br><b>450 000 сум</b></div>
+      <div class="kb"><span>➕ В корзину</span><span>⬅️ Назад</span></div>
+      <div class="msg" data-i="m3">✅ Заказ №1024 оформлен! Мы свяжемся с вами.</div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2 data-i="h_title">Как мы работаем</h2>
+    <p class="sub" data-i="h_sub">Просто и прозрачно</p>
+    <div class="grid steps">
+      <div class="card"><h3 data-i="h1_t">Обсуждение</h3><p data-i="h1">Пишете в Telegram, я задаю пару вопросов и называю точную цену и срок.</p></div>
+      <div class="card"><h3 data-i="h2_t">Предоплата 50%</h3><p data-i="h2">Фиксируем задачу письменно, и я начинаю работу.</p></div>
+      <div class="card"><h3 data-i="h3_t">Проверка</h3><p data-i="h3">Показываю результат, вношу до 2 кругов правок бесплатно.</p></div>
+      <div class="card"><h3 data-i="h4_t">Запуск</h3><p data-i="h4">Оплачиваете остаток, я запускаю проект и объясняю, как им пользоваться.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 data-i="ct_title">Обсудим ваш проект?</h2>
+    <p class="sub" data-i="ct_sub">Отвечаю быстро, консультация бесплатно</p>
+    <div class="btns">
+      <a class="btn primary" data-tg>✈️ Telegram</a>
+      <a class="btn ghost" data-phone>📞 <span data-phone-text></span></a>
+    </div>
+  </div>
+</section>
+
+<footer><span data-name-plain></span> · <span data-i="f">Сайты и Telegram-боты · Узбекистан</span></footer>
+<a class="float" data-tg aria-label="Telegram">✈️</a>
+
+<script>
+// ===== НАСТРОЙКИ: замени на свои данные =====
+const CONFIG = {
+  name: "at_139bpm",            // твоё имя или бренд, например "Aziz Dev"
+  telegram: "at_139bpm",        // @username в Telegram, без @
+  phone: "",                    // номер телефона, например "+998 90 000 00 00"; пусто = кнопку не показывать
+  demoBot: "Demobizz_bot",      // username демо-бота, без @
+};
+// ============================================
+
+const T = {
+  uz: {
+    nav_services: "Xizmatlar", nav_demo: "Namunalar", nav_how: "Qanday ishlaymiz", nav_contact: "Aloqa",
+    hero_title: "Biznesingiz uchun<br>sayt va <em>Telegram-botlar</em>",
+    hero_text: "Do'konlar, kafelar, salonlar va servislarga onlayn ko'proq buyurtma olishga yordam beraman. Tez, tushunarli va ortiqcha xarajatlarsiz.",
+    btn_order: "Telegramda buyurtma berish", btn_prices: "Narxlarni ko'rish",
+    b1v: "3 kundan", b1: "ishga tushirish", b2: "ikki til", b3: "bo'lib to'lash", b4v: "1 oy", b4: "bepul qo'llab-quvvatlash",
+    s_title: "Xizmatlar va narxlar", s_sub: "Narx ish boshlanishidan oldin belgilanadi, yashirin to'lovlarsiz",
+    c1_t: "Buyurtmalar uchun Telegram-bot", c1_1: "Rasmli mahsulotlar katalogi", c1_2: "Savatcha va buyurtma berish", c1_3: "Buyurtmalar Telegramingizga keladi",
+    c2_t: "Yozilish uchun bot", c2_1: "Xizmat, sana va vaqtni tanlash", c2_2: "Mijozlarga eslatmalar", c2_3: "Salonlar, klinikalar, avtoservislar uchun",
+    c3_t: "Sayt-vizitka / landing", c3_1: "Telefonda chiroyli ko'rinadi", c3_2: "Qo'ng'iroq, Telegram, xarita tugmalari", c3_3: ".uz domen va Google Maps",
+    c4_t: "Internet-do'kon", c4_1: "Katalog, savatcha, admin panel", c4_2: "Click / Payme to'lovi", c4_3: "Telegram-bot sovg'a",
+    from: "", sum: "so'mdan",
+    d_title: "Jonli namunani sinab ko'ring", d_text: "Bu do'kon demo-boti. Uni Telegramda oching va mijoz yo'lini bosib o'ting: mahsulot tanlang, savatga qo'shing, buyurtma bering. Xuddi shunday botni sizning biznesingiz uchun, sizning mahsulot va narxlaringiz bilan yaratib beraman.", d_btn: "Demo-botni ochish",
+    m1: "Xush kelibsiz! Kategoriyani tanlang 👇", m2: "Air Run krossovkalari<br><b>450 000 so'm</b>", m3: "✅ №1024 buyurtma qabul qilindi! Siz bilan bog'lanamiz.",
+    h_title: "Qanday ishlaymiz", h_sub: "Oddiy va shaffof",
+    h1_t: "Muhokama", h1: "Telegramga yozasiz, men bir nechta savol beraman va aniq narx hamda muddatni aytaman.",
+    h2_t: "50% oldindan to'lov", h2: "Vazifani yozma ravishda belgilaymiz va ishni boshlayman.",
+    h3_t: "Tekshirish", h3: "Natijani ko'rsataman, 2 martagacha tuzatishlar bepul.",
+    h4_t: "Ishga tushirish", h4: "Qolgan qismini to'laysiz, loyihani ishga tushiraman va qanday foydalanishni tushuntiraman.",
+    ct_title: "Loyihangizni muhokama qilamizmi?", ct_sub: "Tez javob beraman, maslahat bepul",
+    f: "Saytlar va Telegram-botlar · O'zbekiston",
+  }
+};
+
+// apply config
+document.querySelectorAll("[data-tg]").forEach(a => { a.href = "https://t.me/" + CONFIG.telegram; a.target = "_blank"; });
+document.querySelectorAll("[data-demo]").forEach(a => { a.href = "https://t.me/" + CONFIG.demoBot; a.target = "_blank"; });
+if (CONFIG.phone) {
+  document.querySelectorAll("[data-phone]").forEach(a => a.href = "tel:" + CONFIG.phone.replace(/\s/g, ""));
+  document.querySelectorAll("[data-phone-text]").forEach(s => s.textContent = CONFIG.phone);
+} else {
+  document.querySelectorAll("[data-phone]").forEach(a => a.remove());
+}
+document.querySelectorAll("[data-name-plain]").forEach(s => s.textContent = CONFIG.name);
+document.querySelector("[data-name]").textContent = CONFIG.name;
+
+// i18n: remember the original Russian text, swap on toggle
+const els = [...document.querySelectorAll("[data-i]")];
+els.forEach(el => el.dataset.ru = el.hasAttribute("data-html") ? el.innerHTML : el.textContent);
+function setLang(l) {
+  document.documentElement.lang = l;
+  els.forEach(el => {
+    const v = l === "ru" ? el.dataset.ru : T[l][el.dataset.i];
+    if (v === undefined) return;
+    if (el.hasAttribute("data-html")) el.innerHTML = v; else el.textContent = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.l === l));
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => setLang(b.dataset.l));
+try { const saved = localStorage.getItem("lang"); if (saved && saved !== "ru") setLang(saved); } catch (e) {}
+</script>
+</body>
+</html>
